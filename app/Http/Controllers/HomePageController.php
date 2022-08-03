@@ -11,10 +11,7 @@ class HomePageController extends Controller
         $letra = $request->inicial;
         $usuarios = User::all();
         $usuarios = User::where('name', 'like', $letra.'%')->get();
-        $usuarios = User::orderBy('name', 'asc')->get();
 
-        $usuarios = DB::raw('SELECT * FROM users');
-
-        return $usuarios;
+        return view('usuarios')->withUsuarios($usuarios);
     }
 }
